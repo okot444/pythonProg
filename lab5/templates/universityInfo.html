@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>Университет:  {{ data.university_name }} </p>
+    <p>Ректор: {{ data.manager.last_name }} {{ data.manager.first_name }} {{ data.manager.patronymic }}</p>
+    <p>Местоположение: {{ data.address.postalCode }}, {{ data.address.city }}, {{ data.address.streetAddress }}</p>
+    <p>Кол-во административных подразделений: {{ admin_num }}</p>
+    <p>Кол-во научно-образовательных подразделений: {{ science_num }}</p>
+    <p>Кол-во мегафакультетов: {{ mf_num }}</p>
+    <p>Кол-во факультетов: {{ f_num }}</p>
+    <p>Кол-во кафедр: {{ c_num }}</p>
+    <p>Кол-во студентов: {{ stud_num }}</p>
+
+</body>
+</html>

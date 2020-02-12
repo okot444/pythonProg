@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    Университет: {{ data.university_name }}({{ data.manager.last_name }} {{ data.manager.first_name|slice:"1" }}.{{ data.manager.patronymic|slice:"1" }}.)
+    <br>|_Административные подразделения:
+    <br>| &nbsp;|_Ректорат({{ rectorate.ID }}, {{ rectorate.name }}, {{ rectorate.manager.last_name }} {{ rectorate.manager.first_name|slice:"1" }}.{{ rectorate.manager.patronymic|slice:"1" }}.)
+    <br>| &nbsp;|_Бухгалтерия({{ bookkeeping.ID }}, {{ bookkeeping.name }}, {{ bookkeeping.manager.last_name }} {{ bookkeeping.manager.first_name|slice:"1" }}.{{ bookkeeping.manager.patronymic|slice:"1" }}.)
+    <br>| <br> |_ Научно-образовательные подразделения:
+    {%  for i in mf %}
+        <br>&nbsp; &nbsp; |_ Мегафакультет ({{ i.ID }}, {{ i.name }})
+        {% for j in i.faculties %}
+            <br> &nbsp; &nbsp; |&nbsp;&nbsp; |_Факультет( {{ j.ID }}, {{ j.faculty_name }})
+            {%  for k in j.cathedras %}
+                <br> &nbsp; &nbsp; | &nbsp;&nbsp;| &nbsp;&nbsp;|_Кафедра ({{ k.ID }}, {{ k.cathedral_name }})
+            {%  endfor %}
+        {%  endfor %}
+    {%  endfor %}
+
+</body>
+</html>

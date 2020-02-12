@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head >
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static "groups_css.css" %} ">
+    {#  <link href="groups_css.css" rel="stylesheet"> #}
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table  border = " 3px solid black" cellspacing="0" cellpadding="5" >
+      <tr align="center" >
+        <td>Группа</td> <td width="10px">Табельный номер</td> <td width="10px"> Студент</td> <td> Стипендия</td>
+      </tr>
+      {%for i in mf%} {%for j in i.faculties%} {%for k in j.cathedras%}
+
+          {%for a in k.educational_programs%}{% for b in a.years.groups %}
+              <tr>
+              {%for c in b.students%}
+                  <tr>
+                  <td>{{ b.group_name }}</td> <td>{{ c.t_number }}</td> <td> {{c.last_name }} {{ c.first_name }} {{ c.patronymic }} </td> <td> {{  c.position }}</td>
+                  </tr>
+                {% endfor %}
+              </tr>
+          {% endfor %}{% endfor %}
+      {% endfor %}{% endfor %}{% endfor %}
+    </table>
+</body>
+</html>

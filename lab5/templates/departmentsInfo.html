@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+    {%for i in mf%} {% for j in i.faculties %} {% for k in j.cathedras %}
+
+            <p> Кафедра: {{ k.cathedral_name }} </p>
+            <p> Преподаватели:</p>
+
+                <ol>
+                {% for b in k.managers %}
+                 <li> {{b.last_name }} {{ b.first_name }} {{ b.patronymic }} ({{ b.t_number }}, {{ b.position }}) </li>
+                {% endfor %}
+                </ol>
+            <p> Образовательные программы: </p>
+            <ul>
+
+                {%for c in k.educational_programs%}
+                    <li> Номер программы {{ c.program_number }} ({{ c.program_name }}, {{ c.discipline }})</li>
+                {% endfor %}
+            </ul>
+        {% endfor %}{% endfor %}
+
+        <br>
+    {% endfor %}
+</body>
+</html>
